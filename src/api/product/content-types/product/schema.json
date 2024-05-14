@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "on_sale": {
+      "type": "boolean",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "liked": {
+      "type": "boolean",
+      "default": false
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "sub_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sub-category.sub-category",
+      "inversedBy": "products"
+    },
+    "weight": {
+      "type": "decimal",
+      "min": 0
+    },
+    "breed": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::breeed.breeed"
+    },
+    "Delivery": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}
